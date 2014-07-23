@@ -1,7 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var products = require('./models/products')
-
+var controller = require('./controllers/index-controller.js')
 
 var app = express();
 app.set('view engine', 'jade');
@@ -12,11 +11,7 @@ app.use(bodyParser());
 
 
 
-app.get('/', function(req, res) {
-	res.render('index', {
-		coffeeProducts: products
-	});
-});
+app.get('/', controller.index);
 
 var server = app.listen(9473, function() {
 	console.log('Express server listening on port ' + server.address().port);
